@@ -1,0 +1,90 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #222222;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 40px;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #ffda0a;
+}
+
+/* File list on index page */
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.file-link {
+  display: block;
+  padding: 15px;
+  background: #ffda0a;
+  color: #222222;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.file-link:hover {
+  background: #ffd000;
+  transform: translateY(-3px);
+}
+
+/* Download page styling */
+.description {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #dddddd;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 15px 25px;
+  background: #ffda0a;
+  color: #222222;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #ffd000;
+  transform: scale(1.05);
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ffda0a;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
