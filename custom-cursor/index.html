@@ -15,7 +15,8 @@
 
   <main>
     <p class="description">Click below to download your file.</p>
-    <a href="../assets/CUSTOM-CURSOR-ASSETS.zip" download class="download-btn">⬇ Download File</a>
+    <!-- <a href="../assets/CUSTOM-CURSOR-ASSETS.zip" download class="download-btn">⬇ Download File</a> -->
+    <a id="downloadLink" href="/assets/CUSTOM-CURSOR-ASSETS.zip" download class="download-btn">⬇ Download File</a>
     <br><br>
     <a href="../" class="back-link">← Back to Files</a>
   </main>
@@ -30,6 +31,46 @@
       <a href="https://linkedin.com/in/charles-ikpe" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
   </footer>
+
+
+  <script>
+    (function(){
+      const link = document.getElementById('downloadLink');
+    
+      link.addEventListener('click', function (e) {
+        // Build minimal payload
+        const payload = {
+          filename: 'CUSTOM-CURSOR-ASSETS.zip',
+          ts: new Date().toISOString()
+        };
+    
+        const url = '/log-download'; // server endpoint (must be same origin or CORS-enabled)
+    
+        const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+    
+        // Use sendBeacon if available (works well when leaving page)
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(url, blob);
+          // allow default action (download)
+          return true;
+        }
+    
+        // Fallback: fire-and-forget fetch (do not block navigation)
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true // helps for background sending in some browsers
+        }).catch((err) => {
+          // ignore errors silently
+          console.debug('log failed', err);
+        });
+    
+        // allow default action (download)
+        return true;
+      }, { passive: true });
+    })();
+  </script>
 </body>
 
 </html>
